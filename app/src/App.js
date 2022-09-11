@@ -14,6 +14,13 @@ const App = () => {
 
         if (solana && solana.isPhantom) {
           console.log('Phantom wallet found!!');
+
+          
+          const response = await solana.connect({ onlyIfTrusted: true });
+          console.log(
+            'Connected with Public Key: ',
+            response.publicKey.toString()
+          );
         } else {
           alert('Solana wallet is not found. Please get a Phantom wallet')
         }
