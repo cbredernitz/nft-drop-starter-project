@@ -29,11 +29,17 @@ const App = () => {
       }
   }
   
-  
-  /*
-   * When our component first mounts, let's check to see if we have a connected
-   * Phantom Wallet
-   */
+  const connectWallet = async () => {
+
+  };
+
+  const renderNotConnectedContainer = () => {
+    <button
+      className='cta-button connect-wallet-button'
+      onClick={connectWallet}
+      >Connect to wallet
+    </button>
+  };
 
   useEffect(() => {
     const onLoad = async () => {
@@ -42,12 +48,15 @@ const App = () => {
     window.addEventListener('load', onLoad);
     return () => window.removeEventListener('load', onLoad);
   }, [])
+
+
   return (
     <div className="App">
       <div className="container">
         <div className="header-container">
           <p className="header">🍭 Candy Drop</p>
           <p className="sub-text">NFT drop machine with fair mint</p>
+          {renderNotConnectedContainer()}
         </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
