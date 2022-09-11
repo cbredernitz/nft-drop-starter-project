@@ -7,39 +7,39 @@ const TWITTER_HANDLE = '_buildspace';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
 const App = () => {
+  const checkIfWalletIsConnected = async () => {
+    try {
+      const { solana } = window;
 
-  const checkIfWalletIsConnected = async() => {
-      try {
-        const { solana } = window;
-
-        if (solana && solana.isPhantom) {
-          console.log('Phantom wallet found!!');
-
-          
+      if (solana) {
+        if (solana.isPhantom) {
+          console.log('Phantom wallet found!');
           const response = await solana.connect({ onlyIfTrusted: true });
           console.log(
-            'Connected with Public Key: ',
+            'Connected with Public Key:',
             response.publicKey.toString()
           );
-        } else {
-          alert('Solana wallet is not found. Please get a Phantom wallet')
         }
-      } catch (error) {
-        console.error(error);
+      } else {
+        alert('Solana object not found! Get a Phantom Wallet 👻');
       }
-  }
-  
-  const connectWallet = async () => {
-
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const renderNotConnectedContainer = () => {
+
+  const connectWallet = async () => {};
+
+
+  const renderNotConnectedContainer = () => (
     <button
-      className='cta-button connect-wallet-button'
+      className="cta-button connect-wallet-button"
       onClick={connectWallet}
-      >Connect to wallet
+    >
+      Connect to Wallet
     </button>
-  };
+  );
 
   useEffect(() => {
     const onLoad = async () => {
@@ -47,8 +47,7 @@ const App = () => {
     };
     window.addEventListener('load', onLoad);
     return () => window.removeEventListener('load', onLoad);
-  }, [])
-
+  }, []);
 
   return (
     <div className="App">
@@ -56,6 +55,7 @@ const App = () => {
         <div className="header-container">
           <p className="header">🍭 Candy Drop</p>
           <p className="sub-text">NFT drop machine with fair mint</p>
+          {/* Render your connect to wallet button right here */}
           {renderNotConnectedContainer()}
         </div>
         <div className="footer-container">
