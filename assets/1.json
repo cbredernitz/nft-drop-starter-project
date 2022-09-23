@@ -1,0 +1,20 @@
+{
+    "name": "Genos",
+    "symbol": "SYMBOL_OF_NFT",
+    "description": "Collection of 4 One Punch Man images on the blockchain. This is the number 2/4.",
+    "image": "1.png",
+    "attributes": [
+      {
+        "trait_type": "Number",
+        "value": "1"
+      }
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "1.png",
+          "type": "image/png"
+        }
+      ]
+    }
+  }
